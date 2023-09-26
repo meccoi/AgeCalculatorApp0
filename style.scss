@@ -34,7 +34,7 @@ body{
 
     .modal-content{
         background-color: var(--clr-secondary-st-white);
-        width: 560px;
+        min-width: 560px;
         position: relative;
         padding: 1.70em;
         display: flex;
