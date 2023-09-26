@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="dist/styles/style.css">
+  <link href="/dist/output.css" rel="stylesheet">
+</head>
+<body>
+    <style>
+        /* *{
+            border: 1px solid red;
+        } */
+        @media only screen and (max-width: 600px) {
+    body{
+        background-color: var(--clr-secondary-st-white);
+    }
+ 
+    .modal{
+
+
+
+        #submit{
+            position: absolute;
+            left: 44%;
+        }
+
+        .modal-content{
+            width: 100%;
+
+            h1{
+                font-size: 3.5rem;
+            }
+
+        }
+
+
+    }
+  }
+  
+    </style>
+<div class="container mx-auto bg-red-600">
+
+
+        <div class="modal">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <div class="modal-input-item">
+                        <label for="">DAY</label>
+                        <input id="day" type="number" maxlength="2" placeholder="DD">
+                    </div>
+                    <div class="modal-input-item">
+                        <label for="">MONTH</label>
+                        <input id="month" type="number" maxlength="2" placeholder="MM">
+                    </div>
+                    <div class="modal-input-item">
+                        <label for="">YEAR</label>
+                        <input id="year" type="number" maxlength="4" placeholder="YYYY">
+                    </div>
+                </div>
+                <div class="mid">
+                    <hr><img id="submit" src="images/icon-arrow.svg" alt="">
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li>
+                            <h1><span id="count-years" class="count">--</span>years</h1>
+                        </li>
+                        <li>
+                            <h1><span id="count-months" class="count">--</span>months</h1>
+                        </li>
+                        <li>
+                            <h1><span id="count-days" class="count">--</span>days</h1>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+
+</div>
+</body>
+</html>
+
+<script>
+    // Get references to the input fields and result elements
+const dayInput = document.getElementById("day");
+const monthInput = document.getElementById("month");
+const yearInput = document.getElementById("year");
+const ageInDays = document.getElementById("count-days");
+const ageInMonths = document.getElementById("count-months");
+const ageInYears = document.getElementById("count-years");
+
+// Function to calculate age and update the result elements
+function calculateAge() {
+  const birthDate = new Date(yearInput.value, monthInput.value - 1, dayInput.value);
+  const currentDate = new Date();
+
+  const ageInMilliseconds = currentDate - birthDate;
+  const ageInSeconds = ageInMilliseconds / 1000;
+  const ageInMinutes = ageInSeconds / 60;
+  const ageInHours = ageInMinutes / 60;
+  const ageInDaysValue = ageInHours / 24;
+  const ageInMonthsValue = ageInDaysValue / 30.44; // Average number of days in a month
+  const ageInYearsValue = ageInMonthsValue / 12;
+
+ageInDays.textContent = Math.floor(ageInDaysValue);
+ageInMonths.textContent = Math.floor(ageInMonthsValue);
+ageInYears.textContent = Math.floor(ageInYearsValue);
+
+}
+
+// Attach the calculateAge function to the form's submit event
+document.getElementById("submit").addEventListener("click", function (e) {
+  e.preventDefault(); // Prevent the form from submitting and reloading the page
+  calculateAge();
+});
+
+
+// Function to animate counting from start to end
+function animateCount(element, start, end, duration) {
+  let startTime = null;
+
+  function step(timestamp) {
+    if (!startTime) startTime = timestamp;
+    const progress = (timestamp - startTime) / duration;
+
+    if (progress < 1) {
+      const value = Math.floor(start + (end - start) * progress);
+      element.textContent = value;
+      requestAnimationFrame(step);
+    } else {
+      element.textContent = end;
+    }
+  }
+
+  requestAnimationFrame(step);
+}
+
+// Function to calculate age and display the counting effect
+function calculateAgeWithCounting() {
+  const birthDate = new Date(yearInput.value, monthInput.value - 1, dayInput.value);
+  const currentDate = new Date();
+
+  const ageInMilliseconds = currentDate - birthDate;
+  const ageInSeconds = ageInMilliseconds / 1000;
+  const ageInMinutes = ageInSeconds / 60;
+  const ageInHours = ageInMinutes / 60;
+  const ageInDaysValue = ageInHours / 24;
+  const ageInMonthsValue = ageInDaysValue / 30.44; // Average number of days in a month
+  const ageInYearsValue = ageInMonthsValue / 12;
+
+  // Animate the counting effect for age values
+  animateCount(ageInDays, 0, Math.floor(ageInDaysValue), 1200);
+  animateCount(ageInMonths, 0, Math.floor(ageInMonthsValue), 1200);
+  animateCount(ageInYears, 0, Math.floor(ageInYearsValue), 1200);
+}
+
+// Attach the calculateAgeWithCounting function to the form's submit event
+document.getElementById("submit").addEventListener("click", function (e) {
+  e.preventDefault(); // Prevent the form from submitting and reloading the page
+  calculateAgeWithCounting();
+});
+
+
+</script>

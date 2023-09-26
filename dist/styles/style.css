@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;600&family=Poppins:ital,wght@0,500;0,700;0,800;0,900;1,800;1,900&family=Roboto:wght@400;700&family=Space+Mono&display=swap");
+:root {
+  --clr-primary-purple: hsl(259, 100%, 65%);
+  --clr-primary-lightred: hsl(0, 100%, 67%);
+  --clr-secondary-st-white: hsl(0, 0%, 100%);
+  --clr-secondary-st-offwhite: hsl(0, 0%, 94%);
+  --clr-secondary-st-lightgrey: hsl(0, 0%, 86%);
+  --clr-secondary-st-smokegrey: hsl(0, 1%, 44%);
+  --clr-secondary-st-offblack: hsl(0, 0%, 8%) ;
+}
+
+body {
+  padding: unset;
+  margin: unset;
+  height: 100vh;
+  background-color: var(--clr-secondary-st-offwhite);
+  line-height: 1.7;
+  font-size: 1.25rem;
+  color: var(--clr-secondary-st-smokegrey);
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.modal .modal-content {
+  background-color: var(--clr-secondary-st-white);
+  width: 560px;
+  position: relative;
+  padding: 1.7em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 0.8em;
+  border-bottom-right-radius: 6em;
+  padding-right: 2em;
+}
+.modal .modal-content .modal-header {
+  display: flex;
+  gap: 1em;
+}
+.modal .modal-content .modal-input-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.modal .modal-content .modal-input-item label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+.modal .modal-content .modal-input-item input {
+  max-width: 105px;
+  margin-left: 1px;
+  border: 1px solid rgb(223, 223, 223);
+  border-radius: 0.4em;
+  padding: 0.4em;
+  padding-left: 0.8em;
+  font-weight: bold;
+}
+.modal .modal-content h1 {
+  font-size: 4.5rem;
+  font-weight: bolder;
+  font-style: italic;
+  color: var(--clr-secondary-st-offblack);
+}
+.modal .modal-content ul {
+  line-height: 1;
+}
+.modal .modal-content .count {
+  color: var(--clr-primary-purple);
+  letter-spacing: 15px;
+}
+.modal .modal-content .mid img {
+  background-color: var(--clr-primary-purple);
+  border-radius: 100%;
+  font-size: 0.8rem;
+  padding: 1.25em;
+  height: 60px;
+  width: 60px;
+  position: absolute;
+  right: 0;
+  top: -30px;
+  transition: 200ms ease;
+}
+.modal .modal-content .mid img:hover {
+  box-shadow: rgba(133, 76, 255, 0.13) 0 0 30px 15px;
+  transform: scale(0.9);
+}
+.modal .modal-content .mid {
+  position: relative;
+  margin-top: 2em;
+  margin-bottom: 1.55em;
+}
+.modal .modal-content img {
+  max-width: 100%;
+  display: block;
+  cursor: pointer;
+}/*# sourceMappingURL=style.css.map */
